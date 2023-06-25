@@ -6,9 +6,9 @@ class Experience extends Component {
     super(props);
   }
 
-  removeButton = () => {
-    document.getElementById("add").remove();
-  };
+  //   removeButton = () => {
+  //     document.getElementById("add").remove();
+  //   };
   // const { jobs } = props;
 
   // organize the data into an object here, and then pass the data up to the parent component and push it to state.jobs
@@ -16,23 +16,9 @@ class Experience extends Component {
   // look into passing props back up to parent component
 
   render() {
-    //const { handleExtraInfo } = this.props;
-
     return (
       <div id="jobInput">
         <form>
-          {/* <input
-          // value={job.position}
-          type="text"
-          id="positionInput"
-          defaultValue="Position"
-        ></input>
-        <input
-          // value={job.company}
-          type="text"
-          id="companyInput"
-          defaultValue="Company"
-        ></input> */}
           {new Array(this.props.count)
             .fill("arbitrary value")
             .map((item, index) => (

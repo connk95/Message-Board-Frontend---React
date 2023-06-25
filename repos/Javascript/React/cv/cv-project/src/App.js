@@ -10,7 +10,7 @@ class App extends Component {
     super();
 
     this.state = {
-      display: "experience",
+      display: "personal",
       personalInfo: {
         name: "",
         address: "",
@@ -26,15 +26,14 @@ class App extends Component {
     };
   }
 
-  retrieveData = (e) => {
-    e.preventDefault();
-
+  retrieveData = () => {
     if (this.state.display === "personal") {
       this.state.personalInfo.name = document.getElementById("name").value;
       this.state.personalInfo.address =
         document.getElementById("address").value;
       this.state.personalInfo.phone = document.getElementById("phone").value;
       this.state.personalInfo.email = document.getElementById("email").value;
+      console.log(this.state.personalInfo);
     } else if (this.state.display === "experience") {
       let job = [
         document.getElementById("position").value,
@@ -63,6 +62,7 @@ class App extends Component {
   };
 
   handleExtraInfo = (e) => {
+    console.log(this.props.util.expRender);
     this.retrieveData();
 
     // FOR FUTURE VERSION, CREATE MULTIPLE FORMS
@@ -94,7 +94,7 @@ class App extends Component {
     } else if (this.state.display === "experience") {
       this.retrieveData();
 
-      // FOR FUTURE VERSION, RETRIEVE MULTIPLE FORMS AT ONCE
+      // FOR FUTURE VERSION, RETRIEVE MULTIPLE FORM DATA AT ONCE
       // for (let i = 0; i < this.util.expRender; i++) {
       // let job = [
       //   document.getElementById(`position${this.state.util.expRender}`).value,
@@ -169,31 +169,8 @@ class App extends Component {
         </div>
       );
     } else if (display === "resume") {
+      //print resume
     }
-
-    // return (
-    //   <div>
-    //     <form onSubmit={this.handleContinue}>
-    //       {/* <Personal /> */}
-    //       {/* start example one */}
-
-    //       {/* {new Array(this.state.util.expRender).fill('arbitrary value').map((item, index) => (
-    //       <div key={index}>
-    //         <Experience />
-    //       </div>
-    //     ))} */}
-    //       {/* end example one */}
-    //       {/* <Skills count={this.state.util.expRender} />
-    //       <button onClick={this.handleExtraInfo}>+ Skills</button> */}
-    //       {}
-    //       {/* <Experience count={this.state.util.expRender} />
-    //       <button onClick={this.handleExtraInfo}>+ Experience</button>
-    //       <Education count={this.state.util.expRender} />
-    //       <button onClick={this.handleExtraInfo}>+ Education</button> */}
-    //       <button type="submit">Continue</button>
-    //     </form>
-    //   </div>
-    // );
   }
 }
 
