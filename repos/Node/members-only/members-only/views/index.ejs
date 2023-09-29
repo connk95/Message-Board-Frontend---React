@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include('partials/header', { user: 'user' }) %>
+    <div id="content">
+      <div id="main">
+        <h2>Messages</h2>
+        <hr />
+        <% if (all_messages) { %>
+        <div class="messages">
+          <% all_messages.forEach(message => { %>
+          <div class="message">
+            <p class="message"><%- message.text %></p>
+            <p class="timestamp"><%- message.timestamp %></p>
+            <hr />
+            <h3 class="username"><%- message.user %></h3>
+          </div>
+          <% }) %> <% } else { %>
+          <h3>Be the first to make a post!</h3>
+          <% } %>
+        </div>
+        <hr />
+        <div id="postMessage">
+          <form method="POST" action="">
+            <div class="form">
+              <input
+                type="text"
+                id="newMessage"
+                name="newMessage"
+                placeholder="New message"
+              />
+              <button class="button" type="submit">Post</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

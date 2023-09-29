@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include('partials/header', { user: 'user' }) %>
+    <div id="content">
+      <div id="signup">
+        <h1><%= title %></h1>
+        <form method="POST" action="">
+          <div class="signupForm">
+            <input
+              required
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Username"
+              value="<%= typeof user == 'undefined' ? '':user.username %>"
+            />
+            <input
+              required
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              value="<%= typeof user == 'undefined' ? '':user.password %>"
+            />
+            <button class="button" type="submit">Submit</button>
+          </div>
+        </form>
+        <% if(typeof errors !="undefined"){ %>
+        <ul>
+          <% errors.forEach(err=>{%>
+          <li><%=err.msg %></li>
+          <% }) %>
+        </ul>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>

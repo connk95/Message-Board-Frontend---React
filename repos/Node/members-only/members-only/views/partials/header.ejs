@@ -1,0 +1,24 @@
+<nav>
+  <div class="header">
+    <h1>
+      <a href="/"><span class="flairText1">Members</span>Only</a>
+    </h1>
+    <% if (user) { %>
+    <div>
+      <ul id="logout">
+        <h2>Welcome back <%= user.username %>!</h2>
+        <button class="button"><a href="home/logout">Logout</a></button>
+      </ul>
+    </div>
+    <% } else { %>
+    <div>
+      <ul id="login">
+        <button class="button"><a href="home/login">Login</a></button>
+        <button class="button">
+          <a href="home/create">Create Account</a>
+        </button>
+      </ul>
+    </div>
+    <% } %>
+  </div>
+</nav>
