@@ -1,12 +1,16 @@
 export interface Post {
+  id: string;
   title: string;
-  test: string;
-  createdAd: Date;
+  text: string;
+  user: string;
+  likes: [];
+  comments: [];
+  createdAt: Date;
   updatedAt: Date;
 }
 
 export interface PostState {
-  posts: Post[];
+  allPosts: Post[];
   error: string;
   loading: boolean;
 }

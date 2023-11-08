@@ -1,5 +1,5 @@
 import { lazy, useEffect } from "react";
-import { Provider, useSelector } from "react-redux";
+import { Provider } from "react-redux";
 import { Grid, Card, Typography, CardContent } from "@mui/material";
 import { Route, Router, Switch } from "react-router";
 import { Link } from "react-router-dom";
@@ -8,7 +8,6 @@ import "./App.css";
 import { useAppDispatch } from "./redux/hooks";
 import { fetchPosts } from "./redux/post/post.actions";
 import { store } from "./redux/store";
-import { RootState } from "./redux/store";
 
 // const LoginPage = lazy(() =>
 //   import("./pages/LoginPage").then((module) => ({
@@ -31,9 +30,7 @@ const PostPage = lazy(() =>
 export const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
-  // const posts = store.getState().posts;
-
-  const posts = useSelector((state: RootState) => state.posts);
+  const posts = store.getState().posts;
 
   console.log(posts);
 
@@ -47,14 +44,14 @@ export const App = (): JSX.Element => {
       <Grid container direction="column" alignItems="center">
         <Grid item>
           <Typography>Posts</Typography>
-          {posts.map((post) => (
+          {posts.allPosts.map((post) => (
             <Card key={post.id}>
               <Link to={`/posts/${post.id}`}>
                 <CardContent>
                   <Typography>{post.title}</Typography>
                   <Typography>{post.text}</Typography>
                   <Typography>
-                    posted at {post.date} by {post.user}
+                    posted at {post.createdAt.toISOString()} by {post.user}
                   </Typography>
                 </CardContent>
               </Link>
