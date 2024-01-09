@@ -11,6 +11,8 @@ type GenericState = {
   };
 };
 
+console.log(import.meta.env.VITE_API_URL);
+
 export const fetchSinglePost = createAsyncThunk(
   "posts/fetchSinglePost",
   async (id: string) => {
