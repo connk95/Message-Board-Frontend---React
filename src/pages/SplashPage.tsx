@@ -20,6 +20,8 @@ export const SplashPage = (): JSX.Element => {
   };
   useEffect(() => changeImage(), []);
 
+  console.log(import.meta.env.VITE_API_URL);
+
   return (
     <Container
       component="main"

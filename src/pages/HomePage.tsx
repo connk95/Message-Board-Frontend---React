@@ -21,6 +21,8 @@ export const HomePage = (): JSX.Element => {
   const auth = useSelector((state: RootState) => state.auth);
   const dispatch = useAppDispatch();
 
+  console.log(import.meta.env.VITE_API_URL);
+
   useEffect(() => {
     dispatch(fetchPosts());
   }, [dispatch]);

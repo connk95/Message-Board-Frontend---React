@@ -11,8 +11,6 @@ type GenericState = {
   };
 };
 
-console.log(import.meta.env.VITE_API_URL);
-
 export const fetchSinglePost = createAsyncThunk(
   "posts/fetchSinglePost",
   async (id: string) => {
@@ -22,6 +20,7 @@ export const fetchSinglePost = createAsyncThunk(
 );
 
 export const fetchPosts = createAsyncThunk("posts/fetchAllPosts", async () => {
+  console.log(import.meta.env.VITE_API_URL);
   const res = await axios.get(`${import.meta.env.VITE_API_URL}/posts`);
   return res.data;
 });
