@@ -20,7 +20,6 @@ export const fetchSinglePost = createAsyncThunk(
 );
 
 export const fetchPosts = createAsyncThunk("posts/fetchAllPosts", async () => {
-  console.log(import.meta.env.VITE_API_URL);
   const res = await axios.get(`${import.meta.env.VITE_API_URL}/posts`);
   return res.data;
 });
