@@ -47,7 +47,7 @@ export const NewPost = (): JSX.Element => {
           onSubmit={handleSubmit(onSubmit)}
           noValidate
         >
-          <Grid container spacing={2}>
+          <Grid container spacing={2} maxWidth="md">
             <Grid item xs={12}>
               <TextField
                 {...register("title", {

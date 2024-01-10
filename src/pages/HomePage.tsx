@@ -35,7 +35,7 @@ export const HomePage = (): JSX.Element => {
           alignItems: "center",
         }}
       >
-        <Grid container spacing={2}>
+        <Grid container spacing={2} maxWidth="md">
           <Grid item xs={12}>
             <Typography variant="h4" sx={{ alignContent: "center" }}>
               All posts

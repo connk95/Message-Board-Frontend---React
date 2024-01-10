@@ -42,7 +42,7 @@ export const UserPage = (): JSX.Element => {
             alignItems: "center",
           }}
         >
-          <Grid container spacing={2}>
+          <Grid container spacing={2} maxWidth="md">
             <Grid item xs={12}>
               <Card>
                 <CardContent>
