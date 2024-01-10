@@ -26,7 +26,7 @@ export const HomePage = (): JSX.Element => {
   }, [dispatch]);
 
   return (
-    <Container component="main" maxWidth="md" sx={{ mt: 12 }}>
+    <Container component="main" maxWidth="false" sx={{ mt: 12 }}>
       <Box
         sx={{
           marginTop: 8,

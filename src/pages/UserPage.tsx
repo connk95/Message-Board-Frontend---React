@@ -30,7 +30,7 @@ export const UserPage = (): JSX.Element => {
   }, [dispatch, auth]);
 
   return (
-    <Container component="main" maxWidth="md" sx={{ mt: 12 }}>
+    <Container component="main" maxWidth="false" sx={{ mt: 12 }}>
       {!user.user._id ? (
         <CircularProgress />
       ) : (

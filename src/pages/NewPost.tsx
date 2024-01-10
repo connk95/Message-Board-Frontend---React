@@ -32,7 +32,7 @@ export const NewPost = (): JSX.Element => {
   };
 
   return (
-    <Container component="main" maxWidth="md" sx={{ mt: 12 }}>
+    <Container component="main" maxWidth="false" sx={{ mt: 12 }}>
       {posts.loading ? (
         <CircularProgress />
       ) : auth.loggedInUser.access_token ? (

@@ -46,7 +46,7 @@ export const PostPage = (): JSX.Element => {
   }, [dispatch, id]);
 
   return (
-    <Container component="main" maxWidth="md" sx={{ mt: 12 }}>
+    <Container component="main" maxWidth="false" sx={{ mt: 12 }}>
       {posts.loading ? (
         <CircularProgress />
       ) : posts.singlePost.title ? (

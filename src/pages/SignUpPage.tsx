@@ -38,7 +38,7 @@ export const SignUp = (): JSX.Element => {
   };
 
   return (
-    <Container component="main" maxWidth="xs" sx={{ mt: 12 }}>
+    <Container component="main" maxWidth="false" sx={{ mt: 12 }}>
       <CssBaseline />
       {(!user.error || !user.loading) && (
         <Box

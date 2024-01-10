@@ -50,7 +50,7 @@ export const Login = (): JSX.Element => {
   }, [auth.loggedInUser.access_token, auth.error, navigate]);
 
   return (
-    <Container component="main" maxWidth="xs" sx={{ mt: 12 }}>
+    <Container component="main" maxWidth="false" sx={{ mt: 12 }}>
       <CssBaseline />
       {(!auth.error || !auth.loading) && (
         <Box
