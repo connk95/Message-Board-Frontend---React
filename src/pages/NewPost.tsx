@@ -10,6 +10,7 @@ import {
   Box,
   Container,
 } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
 import { useNavigate } from "react-router";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Post } from "../redux/post/post.type";
@@ -33,8 +34,11 @@ export const NewPost = (): JSX.Element => {
 
   return (
     <Container component="main" maxWidth="false" sx={{ mt: 12 }}>
+      <CssBaseline />
       {posts.loading ? (
-        <CircularProgress />
+        <Box sx={{ ml: "48%" }}>
+          <CircularProgress />
+        </Box>
       ) : auth.loggedInUser.access_token ? (
         <Box
           sx={{

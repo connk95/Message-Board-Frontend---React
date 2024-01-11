@@ -61,7 +61,7 @@ export const SignUp = (): JSX.Element => {
             component="form"
             noValidate
             onSubmit={handleSubmit(onSubmit)}
-            sx={{ mt: 3 }}
+            sx={{ mt: 1 }}
           >
             <Grid container spacing={2}>
               <Grid item xs={12}>
@@ -71,6 +71,10 @@ export const SignUp = (): JSX.Element => {
                     minLength: {
                       value: 3,
                       message: "Username must be at least 3 characters long",
+                    },
+                    maxLength: {
+                      value: 16,
+                      message: "Username must be less that 16 characters long",
                     },
                   })}
                   autoComplete="username"

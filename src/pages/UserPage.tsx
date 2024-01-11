@@ -9,6 +9,7 @@ import {
   Container,
   Box,
 } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
 import { Link } from "react-router-dom";
 import { fetchUser } from "../redux/user/user.actions";
 import { useEffect } from "react";
@@ -31,8 +32,11 @@ export const UserPage = (): JSX.Element => {
 
   return (
     <Container component="main" maxWidth="false" sx={{ mt: 12 }}>
+      <CssBaseline />
       {!user.user._id ? (
-        <CircularProgress />
+        <Box sx={{ mt: "19%", ml: "48%" }}>
+          <CircularProgress />
+        </Box>
       ) : (
         <Box
           sx={{

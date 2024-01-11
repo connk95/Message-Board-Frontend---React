@@ -23,7 +23,7 @@ export const SplashPage = (): JSX.Element => {
   return (
     <Container
       component="main"
-      maxWidth={false}
+      maxWidth="false"
       sx={{
         display: "flex",
         flexDirection: "row",

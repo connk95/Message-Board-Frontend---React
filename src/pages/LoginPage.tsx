@@ -78,38 +78,44 @@ export const Login = (): JSX.Element => {
             noValidate
             sx={{ mt: 1 }}
           >
-            <TextField
-              {...register("username")}
-              margin="normal"
-              required
-              fullWidth
-              id="username"
-              label="Username"
-              name="username"
-              autoComplete="username"
-              autoFocus
-            />
-            {errors.username && (
-              <Typography variant="caption" color="error">
-                {errors.username.message}
-              </Typography>
-            )}
-            <TextField
-              {...register("password")}
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            {errors.password && (
-              <Typography variant="caption" color="error">
-                {errors.password.message}
-              </Typography>
-            )}
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  {...register("username")}
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="username"
+                  label="Username"
+                  name="username"
+                  autoComplete="username"
+                  autoFocus
+                />
+                {errors.username && (
+                  <Typography variant="caption" color="error">
+                    {errors.username.message}
+                  </Typography>
+                )}
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  {...register("password")}
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                />
+                {errors.password && (
+                  <Typography variant="caption" color="error">
+                    {errors.password.message}
+                  </Typography>
+                )}
+              </Grid>
+            </Grid>
             <Button
               type="submit"
               fullWidth
@@ -118,11 +124,10 @@ export const Login = (): JSX.Element => {
             >
               Sign In
             </Button>
-            <Grid container>
-              <Grid item xs></Grid>
+            <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/signup" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                  Don't have an account? Sign Up"
                 </Link>
               </Grid>
             </Grid>

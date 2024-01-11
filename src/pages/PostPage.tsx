@@ -10,6 +10,7 @@ import {
   Container,
   Box,
 } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../redux/hooks";
 import { RootState } from "../redux/store";
@@ -47,8 +48,11 @@ export const PostPage = (): JSX.Element => {
 
   return (
     <Container component="main" maxWidth="false" sx={{ mt: 12 }}>
+      <CssBaseline />
       {posts.loading ? (
-        <CircularProgress />
+        <Box sx={{ mt: "19%", ml: "48%" }}>
+          <CircularProgress />
+        </Box>
       ) : posts.singlePost.title ? (
         <Box
           sx={{

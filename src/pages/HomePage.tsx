@@ -10,6 +10,7 @@ import {
   Container,
   Box,
 } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
 import { Link } from "react-router-dom";
 import { Linkify } from "../utils/utilities";
 import { useAppDispatch } from "../redux/hooks";
@@ -27,6 +28,7 @@ export const HomePage = (): JSX.Element => {
 
   return (
     <Container component="main" maxWidth="false" sx={{ mt: 12 }}>
+      <CssBaseline />
       <Box
         sx={{
           marginTop: 8,
@@ -52,8 +54,14 @@ export const HomePage = (): JSX.Element => {
               <></>
             )}
           </Grid>
-          {posts.loading ? <CircularProgress sx={{ mt: 6 }} /> : <></>}
           <Grid item xs={12} sx={{ mb: 10 }}>
+            {posts.loading ? (
+              <Box sx={{ ml: "48%" }}>
+                <CircularProgress sx={{ mt: 6 }} />
+              </Box>
+            ) : (
+              <></>
+            )}
             {posts.allPosts.toReversed().map((post) => (
               <Link to={`/posts/${post._id}`} key={post._id}>
                 <Card sx={{ my: 1 }}>

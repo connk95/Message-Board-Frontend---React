@@ -39,7 +39,7 @@ export const ButtonAppBar = (): JSX.Element => {
             <Typography
               variant="h6"
               component="div"
-              sx={{ flexGrow: 1, mr: 10 }}
+              sx={{ flexGrow: 1, mr: 2 }}
             >
               <Link to={"/home"} style={{ color: "white" }}>
                 ChatBox
@@ -48,8 +48,8 @@ export const ButtonAppBar = (): JSX.Element => {
             </Typography>
             {auth.loggedInUser.access_token ? (
               <>
-                <Typography sx={{ mr: 4 }}>
-                  Welcome back {auth.loggedInUser.user.username}!
+                <Typography sx={{ mr: 3 }}>
+                  Welcome {auth.loggedInUser.user.username}!
                 </Typography>
                 <IconButton
                   size="large"
