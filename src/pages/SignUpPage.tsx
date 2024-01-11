@@ -15,6 +15,7 @@ import { RootState } from "../redux/store";
 import { CircularProgress } from "@mui/material";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router";
+import { useEffect, useState } from "react";
 
 interface SignUpFormInput {
   username: string;
@@ -26,6 +27,8 @@ export const SignUp = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const user = useSelector((state: RootState) => state.users);
+  const auth = useSelector((state: RootState) => state.auth);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -33,14 +36,27 @@ export const SignUp = (): JSX.Element => {
   } = useForm<SignUpFormInput>();
 
   const onSubmit: SubmitHandler<SignUpFormInput> = async (data) => {
-    await dispatch(createUser(data));
-    navigate("/home");
+    try {
+      await dispatch(createUser(data));
+    } catch (error) {
+      if (error instanceof Error) {
+        setErrorMessage(error.message);
+      }
+    }
   };
+
+  useEffect(() => {
+    if (auth.loggedInUser.access_token) {
+      navigate("/home");
+    } else if (auth.error) {
+      setErrorMessage(auth.error);
+    }
+  }, [auth.loggedInUser.access_token, auth.error, navigate]);
 
   return (
     <Container component="main" maxWidth="false" sx={{ mt: 12 }}>
       <CssBaseline />
-      {(!user.error || !user.loading) && (
+      {(!auth.error || !auth.loading) && (
         <Box
           sx={{
             marginTop: 8,
@@ -49,7 +65,7 @@ export const SignUp = (): JSX.Element => {
             alignItems: "center",
           }}
         >
-          {user.error && <Typography>{user.error}</Typography>}
+          {auth.error && !errorMessage && <Typography>{auth.error}</Typography>}
           {user.loading && <CircularProgress />}
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
@@ -57,11 +73,14 @@ export const SignUp = (): JSX.Element => {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
+          {errorMessage && (
+            <Typography color="error">{errorMessage}</Typography>
+          )}
           <Box
             component="form"
             noValidate
             onSubmit={handleSubmit(onSubmit)}
-            sx={{ mt: 1 }}
+            sx={{ mt: 1, width: "30vw" }}
           >
             <Grid container spacing={2}>
               <Grid item xs={12}>

@@ -50,7 +50,7 @@ export const PostPage = (): JSX.Element => {
     <Container component="main" maxWidth="false" sx={{ mt: 12 }}>
       <CssBaseline />
       {posts.loading ? (
-        <Box sx={{ mt: "19%", ml: "48%" }}>
+        <Box sx={{ mt: "19%", ml: "47%" }}>
           <CircularProgress />
         </Box>
       ) : posts.singlePost.title ? (

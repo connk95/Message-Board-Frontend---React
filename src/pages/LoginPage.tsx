@@ -76,7 +76,7 @@ export const Login = (): JSX.Element => {
             component="form"
             onSubmit={handleSubmit(onSubmit)}
             noValidate
-            sx={{ mt: 1 }}
+            sx={{ mt: 1, width: "30vw" }}
           >
             <Grid container spacing={2}>
               <Grid item xs={12}>

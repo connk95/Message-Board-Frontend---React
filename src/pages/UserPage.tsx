@@ -34,7 +34,7 @@ export const UserPage = (): JSX.Element => {
     <Container component="main" maxWidth="false" sx={{ mt: 12 }}>
       <CssBaseline />
       {!user.user._id ? (
-        <Box sx={{ mt: "19%", ml: "48%" }}>
+        <Box sx={{ mt: "19%", ml: "47%" }}>
           <CircularProgress />
         </Box>
       ) : (

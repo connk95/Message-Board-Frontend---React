@@ -56,7 +56,7 @@ export const HomePage = (): JSX.Element => {
           </Grid>
           <Grid item xs={12} sx={{ mb: 10 }}>
             {posts.loading ? (
-              <Box sx={{ ml: "48%" }}>
+              <Box sx={{ ml: "47%" }}>
                 <CircularProgress sx={{ mt: 6 }} />
               </Box>
             ) : (

@@ -36,7 +36,7 @@ export const NewPost = (): JSX.Element => {
     <Container component="main" maxWidth="false" sx={{ mt: 12 }}>
       <CssBaseline />
       {posts.loading ? (
-        <Box sx={{ ml: "48%" }}>
+        <Box sx={{ ml: "46%" }}>
           <CircularProgress />
         </Box>
       ) : auth.loggedInUser.access_token ? (
