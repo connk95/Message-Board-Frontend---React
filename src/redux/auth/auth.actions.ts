@@ -59,12 +59,15 @@ export const userLogout = createAsyncThunk(
 export const createUser = createAsyncThunk(
   "auth/createUser",
   async ({ username, email, password }: User) => {
-    const res = await axios.post(`${import.meta.env.VITE_API_URL}/users`, {
-      username,
-      email,
-      password,
-    });
-
-    return res.data;
+    try {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/users`, {
+        username,
+        email,
+        password,
+      });
+      return res.data;
+    } catch (error) {
+      throw new Error("This username is already in use. Please try again");
+    }
   }
 );
