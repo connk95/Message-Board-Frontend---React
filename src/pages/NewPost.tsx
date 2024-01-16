@@ -97,10 +97,21 @@ export const NewPost = (): JSX.Element => {
                   {errors.text.message}
                 </Typography>
               )}
-            </Grid>
-            <Grid item xs={2}>
-              <Button type="submit" variant="contained" sx={{ width: 90 }}>
+              {/* </Grid> */}
+              {/* <Grid item xs={2}> */}
+              <Button
+                type="submit"
+                variant="contained"
+                sx={{ width: 90, mt: 2, mb: 10 }}
+              >
                 Submit
+              </Button>
+              <Button
+                href="/home"
+                variant="contained"
+                sx={{ width: 90, mt: 2, mb: 10, ml: 2 }}
+              >
+                Back
               </Button>
             </Grid>
           </Grid>

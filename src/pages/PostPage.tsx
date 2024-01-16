@@ -85,7 +85,9 @@ export const PostPage = (): JSX.Element => {
             </Grid>
             {posts.singlePost.comments.length > 0 ? (
               <Grid item xs={12}>
-                <Typography sx={{ ml: 1, mb: 2 }}>Comments</Typography>
+                <Typography sx={{ ml: 1, mb: 2 }}>
+                  Comments: {`${posts.singlePost.comments.length}`}
+                </Typography>
                 {posts.singlePost.comments.toReversed().map((comment) => (
                   <Card key={comment._id} sx={{ my: 1 }}>
                     <CardContent key={comment.id}>
@@ -133,6 +135,13 @@ export const PostPage = (): JSX.Element => {
                   sx={{ width: 90, mt: 2, mb: 10 }}
                 >
                   Submit
+                </Button>
+                <Button
+                  href="/home"
+                  variant="contained"
+                  sx={{ width: 90, mt: 2, mb: 10, ml: 2 }}
+                >
+                  Back
                 </Button>
               </Grid>
             ) : (
