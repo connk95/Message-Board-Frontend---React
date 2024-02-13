@@ -27,7 +27,7 @@ export const HomePage = (): JSX.Element => {
   }, [dispatch]);
 
   return (
-    <Container component="main" maxWidth="false" sx={{ mt: 12 }}>
+    <Container component="main" maxWidth="md" sx={{ mt: 12 }}>
       <CssBaseline />
       <Box
         sx={{
@@ -62,25 +62,29 @@ export const HomePage = (): JSX.Element => {
             ) : (
               <></>
             )}
-            {posts.allPosts.toReversed().map((post) => (
-              <Link to={`/posts/${post._id}`} key={post._id}>
-                <Card sx={{ my: 1 }}>
-                  <CardContent>
-                    <Typography sx={{ fontWeight: "bold", fontSize: 18 }}>
-                      {post.title}
-                    </Typography>
-                    <Linkify sx={{ my: 1 }}>{post.text}</Linkify>
-                    <Typography sx={{ fontSize: 14 }}>
-                      posted at {post.createdAt.slice(11, 16)} on{" "}
-                      {post.createdAt.slice(0, 10)}
-                    </Typography>
-                    <Typography sx={{ fontSize: 14 }}>
-                      by {post.user.username}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
+            {Array.isArray(posts.allPosts) &&
+              posts.allPosts
+                .slice()
+                .reverse()
+                .map((post) => (
+                  <Link to={`/posts/${post._id}`} key={post._id}>
+                    <Card sx={{ my: 1 }}>
+                      <CardContent>
+                        <Typography sx={{ fontWeight: "bold", fontSize: 18 }}>
+                          {post.title}
+                        </Typography>
+                        <Linkify sx={{ my: 1 }}>{post.text}</Linkify>
+                        <Typography sx={{ fontSize: 14 }}>
+                          posted at {post.createdAt.slice(11, 16)} on{" "}
+                          {post.createdAt.slice(0, 10)}
+                        </Typography>
+                        <Typography sx={{ fontSize: 14 }}>
+                          by {post.user.username}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
           </Grid>
         </Grid>
       </Box>

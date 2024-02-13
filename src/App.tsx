@@ -29,7 +29,6 @@ const App = () => {
       <Router>
         <Provider store={store}>
           <Header />
-          {location.pathname == "/" ? <Header /> : null}
           <Routes>
             <Route path="/" element={<SplashPage />} />
             <Route path="/home" element={<HomePage />} />
