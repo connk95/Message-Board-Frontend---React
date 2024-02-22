@@ -73,7 +73,7 @@ export const HomePage = (): JSX.Element => {
                         <Typography sx={{ fontWeight: "bold", fontSize: 18 }}>
                           {post.title}
                         </Typography>
-                        <Linkify sx={{ my: 1 }}>{post.text}</Linkify>
+                        <Linkify>{post.text}</Linkify>
                         <Typography sx={{ fontSize: 14 }}>
                           posted at {post.createdAt.slice(11, 16)} on{" "}
                           {post.createdAt.slice(0, 10)}

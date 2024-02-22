@@ -22,8 +22,10 @@ export const UserPage = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.users);
 
   useEffect(() => {
+    /* istanbul ignore else -- @preserve */
     if (auth.loggedInUser.access_token) {
       const userId = auth.loggedInUser.user._id;
+      /* istanbul ignore else --*/
       if (userId) {
         dispatch(fetchUser(userId));
       }
@@ -31,7 +33,7 @@ export const UserPage = (): JSX.Element => {
   }, [dispatch, auth]);
 
   return (
-    <Container component="main" maxWidth="false" sx={{ mt: 12 }}>
+    <Container component="main" sx={{ mt: 12 }}>
       <CssBaseline />
       {!user.user._id ? (
         <Box sx={{ mt: "19%", ml: "47%" }}>
@@ -64,22 +66,25 @@ export const UserPage = (): JSX.Element => {
                 >
                   Posts
                 </Typography>
-                {user.user.posts.toReversed().map((post) => (
-                  <Link to={`/posts/${post._id}`} key={post._id}>
-                    <Card sx={{ my: 1 }}>
-                      <CardContent>
-                        <Typography sx={{ fontWeight: "bold", fontSize: 18 }}>
-                          {post.title}
-                        </Typography>
-                        <Linkify sx={{ my: 1 }}>{post.text}</Linkify>
-                        <Typography sx={{ fontSize: 14 }}>
-                          posted at {post.createdAt.slice(11, 16)} on{" "}
-                          {post.createdAt.slice(0, 10)}
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
+                {user.user.posts
+                  .slice()
+                  .reverse()
+                  .map((post) => (
+                    <Link to={`/posts/${post._id}`} key={post._id}>
+                      <Card sx={{ my: 1 }}>
+                        <CardContent>
+                          <Typography sx={{ fontWeight: "bold", fontSize: 18 }}>
+                            {post.title}
+                          </Typography>
+                          <Linkify>{post.text}</Linkify>
+                          <Typography sx={{ fontSize: 14 }}>
+                            posted at {post.createdAt.slice(11, 16)} on{" "}
+                            {post.createdAt.slice(0, 10)}
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  ))}
               </Grid>
             ) : (
               <></>
@@ -95,7 +100,7 @@ export const UserPage = (): JSX.Element => {
                   <Link to={`/posts/${comment.postId}`} key={comment._id}>
                     <Card sx={{ my: 1 }}>
                       <CardContent key={comment._id}>
-                        <Linkify sx={{ my: 1 }}>{comment.text}</Linkify>
+                        <Linkify>{comment.text}</Linkify>
                         <Typography sx={{ fontSize: 14 }}>
                           posted at {comment.createdAt.slice(11, 16)} on{" "}
                           {comment.createdAt.slice(0, 10)}

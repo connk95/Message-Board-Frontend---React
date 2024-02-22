@@ -4,11 +4,10 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 import { store } from "../redux/store";
-import { describe, expect, it, vi, beforeEach } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { Post } from "../redux/post/post.type";
 import { waitFor } from "@testing-library/react";
-import { setPosts } from "../redux/post/post.slice";
-import { afterEach } from "vitest";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 vi.mock("axios");
 
@@ -58,5 +57,48 @@ describe("HomePage", () => {
     await waitFor(() => {
       expect(screen.getByText(mockPosts[0].title));
     });
+  });
+
+  it("Renders New Post button when user is logged in", () => {
+    const initialState = {
+      auth: {
+        loggedInUser: {
+          access_token: "mockToken",
+          user: {
+            username: "mockUser",
+            password: "mockPass",
+            email: "mockEmail",
+          },
+        },
+        newUser: {
+          username: "",
+          password: "",
+          email: "",
+        },
+        loading: false,
+        error: "",
+      },
+      posts: {
+        loading: false,
+      },
+    };
+
+    const mockAuthSlice = createSlice({
+      name: "auth",
+      initialState,
+      reducers: {},
+    });
+
+    const mockStore = configureStore(mockAuthSlice);
+
+    render(
+      <Provider store={mockStore}>
+        <Router>
+          <HomePage />
+        </Router>
+      </Provider>
+    );
+
+    expect(screen.getByText("New Post")).toBeInTheDocument();
   });
 });
