@@ -96,19 +96,22 @@ export const UserPage = (): JSX.Element => {
                 >
                   Comments
                 </Typography>
-                {user.user.comments.map((comment) => (
-                  <Link to={`/posts/${comment.postId}`} key={comment._id}>
-                    <Card sx={{ my: 1 }}>
-                      <CardContent key={comment._id}>
-                        <Linkify>{comment.text}</Linkify>
-                        <Typography sx={{ fontSize: 14 }}>
-                          posted at {comment.createdAt.slice(11, 16)} on{" "}
-                          {comment.createdAt.slice(0, 10)}
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
+                {user.user.comments
+                  .slice()
+                  .reverse()
+                  .map((comment) => (
+                    <Link to={`/posts/${comment.postId}`} key={comment._id}>
+                      <Card sx={{ my: 1 }}>
+                        <CardContent key={comment._id}>
+                          <Linkify>{comment.text}</Linkify>
+                          <Typography sx={{ fontSize: 14 }}>
+                            posted at {comment.createdAt.slice(11, 16)} on{" "}
+                            {comment.createdAt.slice(0, 10)}
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  ))}
               </Grid>
             ) : (
               <></>
