@@ -50,7 +50,7 @@ export const Login = (): JSX.Element => {
   }, [auth.loggedInUser.access_token, auth.error, navigate]);
 
   return (
-    <Container component="main" maxWidth="false" sx={{ mt: 12 }}>
+    <Container component="main" sx={{ mt: 12 }}>
       <CssBaseline />
       {(!auth.error || !auth.loading) && (
         <Box
@@ -120,7 +120,10 @@ export const Login = (): JSX.Element => {
               type="submit"
               fullWidth
               variant="contained"
+              name="submit"
               sx={{ mt: 3, mb: 2 }}
+              data-testid="signInButton"
+              aria-hidden="false"
             >
               Sign In
             </Button>

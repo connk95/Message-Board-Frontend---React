@@ -33,7 +33,7 @@ export const NewPost = (): JSX.Element => {
   };
 
   return (
-    <Container component="main" maxWidth="false" sx={{ mt: 12 }}>
+    <Container component="main" sx={{ mt: 12 }}>
       <CssBaseline />
       {posts.loading ? (
         <Box sx={{ ml: "46%" }}>
@@ -97,8 +97,6 @@ export const NewPost = (): JSX.Element => {
                   {errors.text.message}
                 </Typography>
               )}
-              {/* </Grid> */}
-              {/* <Grid item xs={2}> */}
               <Button
                 type="submit"
                 variant="contained"
