@@ -72,6 +72,12 @@ export const SplashPage = (): JSX.Element => {
             >
               Login
             </Button>
+            <Typography sx={{ color: "white", mt: 2, fontSize: 20 }}>
+              Continue without signing in.
+            </Typography>
+            <Button variant="contained" href="/home" sx={{ width: 240, mt: 2 }}>
+              Home
+            </Button>
           </>
         )}
       </Box>

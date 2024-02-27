@@ -88,20 +88,23 @@ export const PostPage = (): JSX.Element => {
                 <Typography sx={{ ml: 1, mb: 2 }}>
                   Comments: {`${posts.singlePost.comments.length}`}
                 </Typography>
-                {posts.singlePost.comments.toReversed().map((comment) => (
-                  <Card key={comment._id} sx={{ my: 1 }}>
-                    <CardContent key={comment.id}>
-                      <Linkify sx={{ mb: 1 }}>{comment.text}</Linkify>
-                      <Typography sx={{ fontSize: 14 }}>
-                        posted at {comment.createdAt.slice(11, 16)} on{" "}
-                        {comment.createdAt.slice(0, 10)}
-                      </Typography>
-                      <Typography sx={{ fontSize: 14 }}>
-                        by {comment.user.username}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                ))}
+                {posts.singlePost.comments
+                  .slice()
+                  .reverse()
+                  .map((comment) => (
+                    <Card key={comment._id} sx={{ my: 1 }}>
+                      <CardContent key={comment.id}>
+                        <Linkify sx={{ mb: 1 }}>{comment.text}</Linkify>
+                        <Typography sx={{ fontSize: 14 }}>
+                          posted at {comment.createdAt.slice(11, 16)} on{" "}
+                          {comment.createdAt.slice(0, 10)}
+                        </Typography>
+                        <Typography sx={{ fontSize: 14 }}>
+                          by {comment.user.username}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  ))}
               </Grid>
             ) : (
               <Typography sx={{ m: 2, ml: 3 }}>
