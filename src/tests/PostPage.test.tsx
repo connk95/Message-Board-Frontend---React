@@ -17,7 +17,7 @@ describe("PostPage", () => {
         username: "mockUser",
         password: "mockPass",
         email: "mockEmail",
-        _id: "mockId",
+        _id: "mockUserId",
       },
       error: "",
       loading: false,
@@ -29,7 +29,7 @@ describe("PostPage", () => {
           username: "mockUser",
           password: "mockPass",
           email: "mockEmail",
-          _id: "mockId",
+          _id: "mockUserId",
         },
       },
       newUser: {
@@ -50,22 +50,22 @@ describe("PostPage", () => {
           username: "mockPoster",
           password: "mockPass",
           email: "mockEmail",
-          _id: "mockId",
+          _id: "mockUserId",
         },
         createdAt: "2024-01-01T12:00:00.000+00:00",
-        _id: "mockId",
+        _id: "mockPostId",
         comments: [
           {
             text: "mockComment",
-            postId: "mockId",
+            postId: "mockPostId",
             user: {
               username: "mockCommenter",
               password: "mockPass",
               email: "mockEmail",
-              _id: "mockId",
+              _id: "mockUserId",
             },
             createdAt: "2024-01-01T12:00:00.000+00:00",
-            _id: "mockId",
+            _id: "mockCommentId",
           },
         ],
       },
@@ -93,7 +93,7 @@ describe("PostPage", () => {
 
     waitFor(() => {
       expect(mockStore.dispatch).toHaveBeenCalledWith(
-        fetchSinglePost({ id: initialState.posts.singlePost._id })
+        fetchSinglePost(initialState.posts.singlePost._id)
       );
     });
 
@@ -140,11 +140,22 @@ describe("PostPage", () => {
     userEvent.click(submitButton);
 
     waitFor(() => {
+      // expect(onSubmit).toHaveBeenCalled()
       expect(mockStore.dispatch).toHaveBeenCalledWith(
         newComment({
-          postId: initialState.posts.singlePost._id,
           text: "mockCommentTwo",
-          user: initialState.auth.loggedInUser.user,
+          postId: initialState.posts.singlePost._id,
+          user: {
+            username: "mockCommenter",
+            password: "mockPass",
+            email: "mockEmail",
+            _id: "mockUserId",
+          },
+          createdAt: "2024-01-01T12:00:00.000+00:00",
+          updatedAt: "2024-01-01T12:00:00.000+00:00",
+          _id: "mockId",
         })
+      );
+    });
   });
 });

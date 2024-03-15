@@ -58,6 +58,7 @@ export const SplashPage = (): JSX.Element => {
             <Button
               variant="contained"
               href="/signup"
+              name="signup"
               sx={{ width: 240, mt: 2 }}
             >
               Create Account
@@ -68,6 +69,7 @@ export const SplashPage = (): JSX.Element => {
             <Button
               variant="contained"
               href="/login"
+              name="login"
               sx={{ width: 240, mt: 2 }}
             >
               Login
@@ -75,7 +77,12 @@ export const SplashPage = (): JSX.Element => {
             <Typography sx={{ color: "white", mt: 2, fontSize: 20 }}>
               Continue without signing in.
             </Typography>
-            <Button variant="contained" href="/home" sx={{ width: 240, mt: 2 }}>
+            <Button
+              variant="contained"
+              href="/home"
+              name="home"
+              sx={{ width: 240, mt: 2 }}
+            >
               Home
             </Button>
           </>

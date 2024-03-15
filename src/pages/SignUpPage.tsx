@@ -161,6 +161,7 @@ export const SignUp = (): JSX.Element => {
               type="submit"
               fullWidth
               variant="contained"
+              name="submit"
               sx={{ mt: 3, mb: 2 }}
             >
               Sign Up

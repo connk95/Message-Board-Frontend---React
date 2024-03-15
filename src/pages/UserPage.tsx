@@ -25,7 +25,7 @@ export const UserPage = (): JSX.Element => {
     /* istanbul ignore else -- @preserve */
     if (auth.loggedInUser.access_token) {
       const userId = auth.loggedInUser.user._id;
-      /* istanbul ignore else --*/
+      /* istanbul ignore else -- @preserve */
       if (userId) {
         dispatch(fetchUser(userId));
       }
@@ -59,7 +59,7 @@ export const UserPage = (): JSX.Element => {
                 </CardContent>
               </Card>
             </Grid>
-            {user.user.posts ? (
+            {user.user.posts && user.user.posts.length > 0 ? (
               <Grid item xs={12}>
                 <Typography
                   sx={{ fontWeight: "bold", fontSize: 20, ml: 2, mt: 2 }}
@@ -89,7 +89,7 @@ export const UserPage = (): JSX.Element => {
             ) : (
               <></>
             )}
-            {user.user.comments ? (
+            {user.user.comments && (
               <Grid item xs={12} sx={{ mb: 8 }}>
                 <Typography
                   sx={{ fontWeight: "bold", fontSize: 20, ml: 2, mt: 2 }}
@@ -113,8 +113,6 @@ export const UserPage = (): JSX.Element => {
                     </Link>
                   ))}
               </Grid>
-            ) : (
-              <></>
             )}
           </Grid>
         </Box>
