@@ -1,4 +1,4 @@
-# Message Board Project (Frontend)
+# Message Board Project (React Frontend)
 
 Welcome to my message board! This project aims to create a simple message board/SNS on which users can create an account, make posts, and interact with one another's posts. The frontend of this project was created using Typescript, React (Redux Toolkit), in a Vite environment. Styling was done using MUI.
 
