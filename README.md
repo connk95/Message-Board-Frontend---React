@@ -29,13 +29,13 @@ https://heroic-custard-3bcb1a.netlify.app/
 1. Clone this repository using the following command:
 
    ```
-   git clone https://github.com/connk95/Message-Board-Frontend.git
+   git clone https://github.com/connk95/Message-Board-Frontend---React.git
    ```
 
 2. Navigate to the project directory:
 
    ```
-   cd Message-Board-Frontend
+   cd Message-Board-Frontend---React
    ```
 
 3. Run the app and view in your browser (You must have a backend running simultaneously!):
