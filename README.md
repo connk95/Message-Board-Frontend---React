@@ -4,8 +4,8 @@ Welcome to my message board! This project aims to create a simple message board/
 
 ## Table of Contents
 
-- [Features](https://github.com/connk95/Message-Board-Frontend---React/main/README.md#features)
-- [Demo](https://github.com/Message-Board-Frontend---React/blob/main/README.md#features)
+- [Features](https://github.com/connk95/Message-Board-Frontend---React/blob/main/README.md#features)
+- [Demo](https://github.com/connk95/Message-Board-Frontend---React/blob/main/README.md#demo)
 - [Installation](https://github.com/connk95/Message-Board-Frontend---React/blob/main/README.md#installation)
 - [Code Description](https://github.com/connk95/Message-Board-Frontend---React/blob/main/README.md#code-description)
 - [Usage](https://github.com/connk95/Message-Board-Frontend---React/blob/main/README.md#usage)
