@@ -3,16 +3,19 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-// import IconButton from "@mui/material/IconButton";
-// import MenuIcon from "@mui/icons-material/Menu";
+import IconButton from "@mui/material/IconButton";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-// import { useAppDispatch } from "../redux/hooks";
 import { RootState } from "../redux/store";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../redux/hooks";
 import { userLogout } from "../redux/auth/auth.actions";
-// import { useEffect } from "react";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { theme } from "../styles/theme";
+import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
+
+const defaultTheme = createTheme(theme);
 
 export const ButtonAppBar = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -29,48 +32,55 @@ export const ButtonAppBar = (): JSX.Element => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, mb: 12 }}>
-      <AppBar position="fixed">
-        <Toolbar>
-          {/* <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton> */}
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Link to={"/"} style={{ color: "white" }}>
-              Home
-            </Link>
-          </Typography>
-          {auth.loggedInUser.access_token ? (
-            <>
-              <Typography sx={{ mr: 4 }}>
-                Welcome back {auth.loggedInUser.user.username}!
-              </Typography>
-              <Button color="inherit" href="/profile">
-                My Profile
-              </Button>
-              <Button color="inherit" href="/" onClick={onClick}>
-                Logout
-              </Button>
-            </>
-          ) : (
-            <>
-              <Button color="inherit" href="/login">
-                Login
-              </Button>
-              <Button color="inherit" href="/signup">
-                Create Account
-              </Button>
-            </>
-          )}
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <ThemeProvider theme={defaultTheme}>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="fixed">
+          <Toolbar>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, mr: 2 }}
+            >
+              <Link to={"/home"} style={{ color: "white" }}>
+                ChatBox
+                <ChatBubbleIcon></ChatBubbleIcon>
+              </Link>
+            </Typography>
+            {auth.loggedInUser.access_token ? (
+              <>
+                <Typography sx={{ mr: 3 }}>
+                  Welcome {auth.loggedInUser.user.username}!
+                </Typography>
+                <IconButton
+                  size="large"
+                  edge="start"
+                  color="inherit"
+                  aria-label="menu"
+                  sx={{ mr: 2 }}
+                  href="/profile"
+                >
+                  <AccountCircleOutlinedIcon />
+                </IconButton>
+                <Button color="inherit" href="/" onClick={onClick}>
+                  Logout
+                </Button>
+              </>
+            ) : window.location.pathname !== "/" ? (
+              <>
+                <Button color="inherit" href="/login">
+                  Login
+                </Button>
+                <Button color="inherit" href="/signup">
+                  Create Account
+                </Button>
+              </>
+            ) : (
+              <></>
+            )}
+          </Toolbar>
+        </AppBar>
+      </Box>
+    </ThemeProvider>
   );
 };
 

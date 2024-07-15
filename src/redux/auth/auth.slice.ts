@@ -87,6 +87,12 @@ const authSlice = createSlice({
         state.loading = false;
       }
     );
+    builder.addCase(setLoggedInUser.pending, (state) => {
+      state.loggedInUser = <LoggedInUser>{};
+      state.newUser = <User>{};
+      state.error = "";
+      state.loading = true;
+    });
   },
 });
 

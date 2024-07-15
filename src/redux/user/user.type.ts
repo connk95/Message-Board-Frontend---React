@@ -1,4 +1,5 @@
 import { Post } from "../post/post.type";
+import { Comment } from "../post/comment.type";
 import { baseState } from "../types";
 
 export interface User {
@@ -7,7 +8,8 @@ export interface User {
   email: string;
   posts?: Post[];
   likes?: [];
-  comments?: [];
+  comments?: Comment[];
+  _id?: string;
 }
 
 export interface UserState extends baseState {
